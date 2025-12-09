@@ -28,34 +28,47 @@ body{
   
 .logo{
     font-size:2.5rem;
-    margin:2rem 4rem;
+    margin:2rem 2rem;
     color:#1A1A1A;
 }
 
 .navigation{
-    background-color:rgba(255, 255, 255, 0.5);
-    max-height:80px;
-    display:flex;
-    align-items:center;
-    position:sticky;
-    flex:1;
-    gap:10rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background-color: rgba(255, 255, 255, 0.5);
+    display: flex;
+    align-items: center;
+    gap:3rem;
+    justify-content: space-between;
+    padding: 0 2rem;
+    backdrop-filter: blur(5px);
+    z-index: 1000;
 }
 .navbar{
     display:flex;
     justify-content:space-evenly;
     flex:1;
-    gap:2.5rem;
+    gap:1rem;
 }
 .navbar a{
     text-decoration:none;
     color:#4A3F35;
     font-size:1.5rem;
     font-weight:600;
-    transition:color 0.3s;
+    padding:0.35rem 0.75rem;
+    border-radius: 0.75rem;
+    transition: color 0.25s ease, background-color 0.25s ease, text-decoration-color 0.25s ease;
 }
 .navbar a:hover{
-    color:#2B2B2B;
+    color:#1A1A1A;
+    background-color: transparent;
+    text-decoration: underline;
+    text-decoration-color:#C8B499;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 6px;
 }
 .content{
     text-align:center;
@@ -121,7 +134,7 @@ body{
 }
 .design{
     text-align: center;
-    padding:4rem 1.5rem;
+    padding:5rem 1.5rem;
 }
 .design h1{
     font-size: 2rem;
@@ -286,21 +299,23 @@ body{
     flex-direction:column;
     max-width: 40%;
 }
-.contact{
+.contact {
     text-align: center;
     padding: 5rem 1.5rem;
 }
-.contact h1{
+
+.contact h1 {
     font-size: 2rem;
     color: #1A1A1A;
     margin-bottom: 0.5rem;
     font-weight: 700;
 }
-.contact h2{
-    font-size:1.5rem;
-    color:#4A4A4A;
+
+.contact h2 {
+    font-size: 1.3rem;
+    color: #4A4A4A;
     margin-bottom: 0.5rem;
-    font-weight: 700;
+    font-weight: 600;
 }
 .contact .line{
     width:200px;
@@ -309,20 +324,45 @@ body{
     margin:0 auto 2rem auto;
     border-radius: 5px;
 }
-.register{
-    display: flex;
-    justify-content: space-evenly;
-    padding: 3rem 1rem;
+.register {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10rem;
+    align-items: start;
+    padding: 3rem 6rem;
     background: #FDF9E8;
-    
+}
+.contact-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    padding: 2rem 4rem;
+    align-items: start;
+    background-color: white;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+    border-radius: 1rem;
+}
+.contact-details h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #1A1A1A;
+}
+.contact-details p {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #212121;
 }
 .booking{
     width: 100%;
     max-width: 400px;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
     font-family: 'Segoe UI', sans-serif;
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+    gap: 1rem;
 }
 .booking label{
     text-align: left;
@@ -342,7 +382,7 @@ body{
 .contact-details{
     display:flex;
     justify-content: center;
-    flex-direction:column;
+    flex-direction:column; 
 }
 .booking button{
     margin-top: 1rem;
@@ -357,4 +397,17 @@ body{
     border-radius: 8px;
     cursor: pointer;
     transition: 0.3s ease;
+}
+.booking button:hover {
+    background: #333333;
+}
+.footer{
+    background:#1A1A1A;
+    color:white;
+    padding:1.8rem 1.5rem;
+}
+.footer-inner p{
+    text-align: center;
+    margin:0;
+    font-size:0.95rem;
 }
