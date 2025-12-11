@@ -4,7 +4,7 @@
 }
 body{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color:#fefae0;
+    background-color:#f5ebe0;
 }
 .background{
     width: 100%;
@@ -22,8 +22,8 @@ body{
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(255, 255, 255, 0.25); /* Light, elegant overlay */
-    backdrop-filter: blur(2.5px); /* smooths the bright areas */
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(2.5px);
   }
   
 .logo{
@@ -207,7 +207,7 @@ body{
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.35);   /* dark overlay for readability */
+    background: rgba(0,0,0,0.35);
 }
 .design-heading a{
     position: relative;
@@ -330,7 +330,6 @@ body{
     gap: 10rem;
     align-items: start;
     padding: 3rem 6rem;
-    background: #FDF9E8;
 }
 .contact-details {
     display: grid;
@@ -411,3 +410,26 @@ body{
     margin:0;
     font-size:0.95rem;
 }
+#heading{
+    text-align: center;
+    padding:3rem;
+    font-size: 4rem;
+    max-height: 80px;
+    background-color: #1A1A1A ;
+    color: #ffffff;
+}
+#heading .line{
+    width:200px;
+    height:3px;
+    background-color: #ffffff;
+    margin:0 auto 2rem auto;
+    border-radius: 5px;
+}
+#paragraph{
+    text-align: center;
+    margin-top:2rem;
+    font-size: 2rem;
+    
+}
+
+
