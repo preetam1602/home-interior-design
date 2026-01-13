@@ -64,6 +64,8 @@ if (bookingForm) {
     response.style.color = "green";
     response.textContent = "Booking Confirmed! We will contact you shortly.";
     alert("Booking Confirmed! We will contact you shortly.");
+    // Save booking message to notepad
+    saveBookingToNotepad();
     // Clear cart after successful booking
     cart = [];
     localStorage.removeItem("cart");
@@ -137,6 +139,8 @@ if (feedbackForm) {
     response.className = "success";
     response.textContent = "Thank You!! For your feedback.";
     alert("Thank You!! For your feedback.");
+    // Save feedback message to notepad
+    saveFeedbackToNotepad();
     feedbackForm.reset();
   });
 }
@@ -360,6 +364,31 @@ function displayBooking(cart) {
   });
 
   booking.innerHTML += `<hr><strong>Total Amount: ₹${total}</strong>`;
+}
+
+/* Notepad functionality for Booking */
+function saveBookingToNotepad() {
+  const name = document.getElementById('name').value;
+  const phone = document.getElementById('phone').value;
+  const message = document.getElementById('message').value;
+  const text = `Name: ${name}\nPhone: ${phone}\nMessage: ${message}`;
+  const blob = new Blob([text], { type: "text/plain" });
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = "booking_notes.txt";
+  link.click();
+}
+
+/* Notepad functionality for Feedback */
+function saveFeedbackToNotepad() {
+  const name = document.getElementById('feedback-name').value;
+  const message = document.getElementById('feedback-message').value;
+  const text = `Name: ${name}\nMessage: ${message}`;
+  const blob = new Blob([text], { type: "text/plain" });
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = "feedback_notes.txt";
+  link.click();
 }
 
 /* INIT */
