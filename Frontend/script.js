@@ -73,6 +73,73 @@ if (bookingForm) {
   });
 }
 
+/*Feedback Form Validation*/
+var feedbackForm = document.getElementById("feedback");
+if (feedbackForm) {
+  feedbackForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    var name = document.getElementById("feedback-name").value.trim();
+    var phone = document.getElementById("feedback-phone").value.trim();
+    var email = document.getElementById("feedback-email").value.trim();
+    var message = document.getElementById("feedback-message").value.trim();
+    var response = document.getElementById("feedbackmsg");
+
+    response.textContent = "";
+    response.className = ""; // Reset classes
+
+    // Name validation
+    if (name === "") {
+      response.className = "error";
+      response.textContent = "Please enter your name";
+      return;
+    }
+    var nameRegex = /^[a-zA-Z\s]+$/;
+    if (!nameRegex.test(name)) {
+      response.className = "error";
+      response.textContent = "Name should contain only letters and spaces";
+      return;
+    }
+
+    // Phone validation
+    if (phone === "") {
+      response.className = "error";
+      response.textContent = "Please enter your phone number";
+      return;
+    }
+    var phoneRegex = /^[6-9]\d{9}$/;
+    if (!phoneRegex.test(phone)) {
+      response.className = "error";
+      response.textContent = "Enter a valid 10-digit phone number starting with 6-9";
+      return;
+    }
+
+    // Email validation
+    if (email === "") {
+      response.className = "error";
+      response.textContent = "Please enter your email";
+      return;
+    }
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      response.className = "error";
+      response.textContent = "Enter a valid email address";
+      return;
+    }
+
+    // Message validation
+    if (message === "") {
+      response.className = "error";
+      response.textContent = "Please enter your message";
+      return;
+    }
+
+    response.className = "success";
+    response.textContent = "Thank You!! For your feedback.";
+    alert("Thank You!! For your feedback.");
+    feedbackForm.reset();
+  });
+}
 
 /*
    CART DATA – COLOR / MATERIAL*/
@@ -209,7 +276,6 @@ function getDiscountRate(id) {
   }
   return 0; // no discount
 }
-
 
 /*DISPLAY CART*/
 function displayCart() {

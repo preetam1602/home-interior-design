@@ -616,3 +616,97 @@ button {
   border-radius: 8px;
   background: #fff;
 }
+
+
+
+/*modifications*/
+.Feedback {
+    text-align: center;
+    padding: 5rem 1.5rem;
+}
+
+.Feedback h1 {
+    font-size: 2rem;
+    color: #1A1A1A;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.Feedback h2 {
+    font-size: 1.3rem;
+    color: #4A4A4A;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+.Feedback .line{
+    width:200px;
+    height:3px;
+    background-color: #C8B499;
+    margin:0 auto 2rem auto;
+    border-radius: 5px;
+}
+.feedback{
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    display:flex;
+    flex-direction: column;
+    font-family: 'Segoe UI', sans-serif;
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+    gap: 1rem;
+}
+.feedback label{
+    text-align: left;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1A1A1A;
+}
+.feedback input,
+.feedback textarea{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #bfbfbf;
+    border-radius: 6px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.feedback input:focus,
+.feedback textarea:focus {
+    border-color: #C8B499;
+    box-shadow: 0 0 5px rgba(200, 180, 153, 0.5);
+}
+.feedback button{
+    margin-top: 1rem;
+    align-self: center;
+    background: #1A1A1A;
+    padding:12px;
+    max-width:10rem;
+    color: white;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+.feedback button:hover {
+    background: #333333;
+}
+
+.feedback #feedbackmsg {
+    text-align: center;
+    font-weight: 600;
+    margin-top: 1rem;
+}
+
+.feedback #feedbackmsg.error {
+    color: #d9534f;
+}
+
+.feedback #feedbackmsg.success {
+    color: #5cb85c;
+}
