@@ -64,8 +64,8 @@ if (bookingForm) {
     response.style.color = "green";
     response.textContent = "Booking Confirmed! We will contact you shortly.";
     alert("Booking Confirmed! We will contact you shortly.");
-    // Save booking message to notepad
-    saveBookingToNotepad();
+    // Save booking to localStorage (save cart copy before clearing)
+    saveBookingFrontend();
     // Clear cart after successful booking
     cart = [];
     localStorage.removeItem("cart");
@@ -366,16 +366,53 @@ function displayBooking(cart) {
   booking.innerHTML += `<hr><strong>Total Amount: ₹${total}</strong>`;
 }
 
-/* Notepad functionality for Booking */
-function saveBookingToNotepad() {
-  const name = document.getElementById('name').value;
-  const phone = document.getElementById('phone').value;
-  const message = document.getElementById('message').value;
-  const text = `Name: ${name}\nPhone: ${phone}\nMessage: ${message}`;
+/* FRONTEND ONLY – STORE ALL BOOKINGS */
+function saveBookingFrontend() {
+  // Create a deep copy of cart to save with booking
+  const cartCopy = JSON.parse(JSON.stringify(cart));
+  
+  const booking = {
+    name: document.getElementById("name").value,
+    phone: document.getElementById("phone").value,
+    email: document.getElementById("email").value,
+    cart: cartCopy,
+    time: new Date().toLocaleString()
+  };
+
+  let allBookings = JSON.parse(localStorage.getItem("allBookings")) || [];
+  allBookings.push(booking);
+  localStorage.setItem("allBookings", JSON.stringify(allBookings));
+}
+
+/* DOWNLOAD ALL BOOKINGS AS ONE FILE */
+function downloadAllBookings() {
+  const bookings = JSON.parse(localStorage.getItem("allBookings")) || [];
+  if (bookings.length === 0) {
+    alert("No bookings found");
+    return;
+  }
+
+  let text = "ALL BOOKINGS\n\n";
+
+  bookings.forEach((b, i) => {
+    text += `Booking ${i + 1}\n`;
+    text += `Name: ${b.name}\n`;
+    text += `Phone: ${b.phone}\n`;
+    text += `Email: ${b.email}\n`;
+    text += `Time: ${b.time}\n`;
+    text += `Items:\n`;
+
+    b.cart.forEach(item => {
+      text += `  - ${item.name} × ${item.qty}\n`;
+    });
+
+    text += "\n----------------------\n\n";
+  });
+
   const blob = new Blob([text], { type: "text/plain" });
   const link = document.createElement("a");
   link.href = URL.createObjectURL(blob);
-  link.download = "booking_notes.txt";
+  link.download = "all_bookings.txt";
   link.click();
 }
 
