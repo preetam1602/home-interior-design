@@ -64,11 +64,8 @@ if (bookingForm) {
     response.style.color = "green";
     response.textContent = "Booking Confirmed! We will contact you shortly.";
     alert("Booking Confirmed! We will contact you shortly.");
-    // Save booking to localStorage (save cart copy before clearing)
-    saveBookingFrontend();
     // Clear cart after successful booking
     cart = [];
-    localStorage.removeItem("cart");
     displayCart();
 
     bookingForm.reset();
@@ -139,8 +136,6 @@ if (feedbackForm) {
     response.className = "success";
     response.textContent = "Thank You!! For your feedback.";
     alert("Thank You!! For your feedback.");
-    // Save feedback message to notepad
-    saveFeedbackToNotepad();
     feedbackForm.reset();
   });
 }
