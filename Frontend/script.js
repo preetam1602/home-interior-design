@@ -365,69 +365,6 @@ function displayBooking(cart) {
 
   booking.innerHTML += `<hr><strong>Total Amount: ₹${total}</strong>`;
 }
-
-/* FRONTEND ONLY – STORE ALL BOOKINGS */
-function saveBookingFrontend() {
-  // Create a deep copy of cart to save with booking
-  const cartCopy = JSON.parse(JSON.stringify(cart));
-  
-  const booking = {
-    name: document.getElementById("name").value,
-    phone: document.getElementById("phone").value,
-    email: document.getElementById("email").value,
-    cart: cartCopy,
-    time: new Date().toLocaleString()
-  };
-
-  let allBookings = JSON.parse(localStorage.getItem("allBookings")) || [];
-  allBookings.push(booking);
-  localStorage.setItem("allBookings", JSON.stringify(allBookings));
-}
-
-/* DOWNLOAD ALL BOOKINGS AS ONE FILE */
-function downloadAllBookings() {
-  const bookings = JSON.parse(localStorage.getItem("allBookings")) || [];
-  if (bookings.length === 0) {
-    alert("No bookings found");
-    return;
-  }
-
-  let text = "ALL BOOKINGS\n\n";
-
-  bookings.forEach((b, i) => {
-    text += `Booking ${i + 1}\n`;
-    text += `Name: ${b.name}\n`;
-    text += `Phone: ${b.phone}\n`;
-    text += `Email: ${b.email}\n`;
-    text += `Time: ${b.time}\n`;
-    text += `Items:\n`;
-
-    b.cart.forEach(item => {
-      text += `  - ${item.name} × ${item.qty}\n`;
-    });
-
-    text += "\n----------------------\n\n";
-  });
-
-  const blob = new Blob([text], { type: "text/plain" });
-  const link = document.createElement("a");
-  link.href = URL.createObjectURL(blob);
-  link.download = "all_bookings.txt";
-  link.click();
-}
-
-/* Notepad functionality for Feedback */
-function saveFeedbackToNotepad() {
-  const name = document.getElementById('feedback-name').value;
-  const message = document.getElementById('feedback-message').value;
-  const text = `Name: ${name}\nMessage: ${message}`;
-  const blob = new Blob([text], { type: "text/plain" });
-  const link = document.createElement("a");
-  link.href = URL.createObjectURL(blob);
-  link.download = "feedback_notes.txt";
-  link.click();
-}
-
 /* INIT */
 document.addEventListener("DOMContentLoaded", function () {
   loadCart();
