@@ -66,7 +66,10 @@ if (bookingForm) {
     alert("Booking Confirmed! We will contact you shortly.");
     // Clear cart after successful booking
     cart = [];
+    localStorage.removeItem("cart");
     displayCart();
+    // Ensure order summary clears even if #cart isn't on this page
+    displayBooking(cart);
 
     bookingForm.reset();
   });
