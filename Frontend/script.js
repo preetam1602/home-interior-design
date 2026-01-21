@@ -365,6 +365,7 @@ function displayBooking(cart) {
 
   booking.innerHTML += `<hr><strong>Total Amount: ₹${total}</strong>`;
 }
+
 /* INIT */
 document.addEventListener("DOMContentLoaded", function () {
   loadCart();
